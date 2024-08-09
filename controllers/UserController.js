@@ -1,9 +1,49 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import mongoose from 'mongoose';
+const { ObjectId } = mongoose.Types;
 
 import {validationResult} from "express-validator";
 import UserModel from "../models/user.js"
 
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await UserModel.find().exec();
+    console.log('Received users:', users);
+
+    res.json(users);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: 'Не удалось получить пользователей',
+    });
+  }
+};
+
+export const getOneUser = async (req, res) =>{
+  try{
+  const {userId} = req.params
+if (!userId || !ObjectId.isValid(userId)){
+  return res.status(400).json({
+    message: 'Неверный идентификатор пользователя'
+  })
+}
+const objectId = new ObjectId(userId)
+
+  const user = await UserModel.findById(objectId).exec()
+  if (!user){
+    return res.status(404).json({message: "Пользователь не найден"})
+  }
+  console.log('Received user:', user)
+  res.json(user)
+} catch (err){
+  console.log(err);
+  res.status(500).json({
+    message: 'Не удалось получить пользователя',
+})
+}
+}
+ 
 export const register = async (req, res) => {
   try {
     //вынесли указанный код в утилитную функцию handleValidstionErrors
