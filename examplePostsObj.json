@@ -1,0 +1,190 @@
+[
+  {
+    "title": "лето с друзьями на роликах",
+    "tags": ["rollerblading", "summertime", "лето"],
+    "text": "прошла половина лета, так хорошо я себя еще не ощущал, поэтому решил рассказать вам о моих приключениях на роликах. Фотография как нельзя лучше иллюстрирует то, какие эмоции я испытываю, находясь рядом с близкими людьми, ставшими мне второй семьей",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post1.jpeg",
+
+    "likes": 5,
+    "viewsCount": 7,
+    "user": "669cdd89efb8bd6ac468aac4",
+    "createdAt": "2024-07-11T11:18:07.710+00:00",
+    "updatedAt": "2024-07-11T11:18:07.710+00:00"
+  },
+  {
+    "title": "Трюки на скейте в парке",
+    "tags": ["скейт", "трюки", "парк"],
+    "text": "Сегодня я попробовал новые трюки на скейте в местном парке. Было сложно, но я справился. Настроение отличное, и я очень доволен своим прогрессом.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post10.jpeg",
+    "likes": 15,
+    "viewsCount": 23,
+    "user": "669cdd89efb8bd6ac468aac6",
+    "createdAt": "2024-07-12T12:30:20.710+00:00",
+    "updatedAt": "2024-07-12T12:30:20.710+00:00"
+  },
+  {
+    "title": "Гонки на самокатах",
+    "tags": ["самокат", "гонки", "веселье"],
+    "text": "Мы устроили гонки на самокатах с друзьями. Это было невероятно весело и азартно! Много смеха и позитивных эмоций.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post11.jpeg",
+    "likes": 10,
+    "viewsCount": 18,
+    "user": "669cdd89efb8bd6ac468aac6",
+    "createdAt": "2024-07-13T10:20:30.710+00:00",
+    "updatedAt": "2024-07-13T10:20:30.710+00:00"
+  },
+  {
+    "title": "Обучение детей катанию на роликах",
+    "tags": ["ролики", "дети", "обучение"],
+    "text": "Сегодня я провел урок по катанию на роликах для детей. Было приятно видеть, как они быстро учатся и получают удовольствие от катания.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post12.jpeg",
+    "likes": 20,
+    "viewsCount": 30,
+    "user": "669cdd89efb8bd6ac468aac4",
+    "createdAt": "2024-07-14T14:15:25.710+00:00",
+    "updatedAt": "2024-07-14T14:15:25.710+00:00"
+  },
+  {
+    "title": "Новый трюк на BMX",
+    "tags": ["BMX", "трюк", "адреналин"],
+    "text": "Сегодня я наконец-то освоил новый трюк на BMX! Это было нелегко, но я справился и получил массу адреналина и удовольствия.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post13.jpeg",
+    "likes": 18,
+    "viewsCount": 25,
+    "user": "669cdd89efb8bd6ac468aac5",
+    "createdAt": "2024-07-15T09:10:40.710+00:00",
+    "updatedAt": "2024-07-15T09:10:40.710+00:00"
+  },
+  {
+    "title": "Вечернее катание на скейте",
+    "tags": ["скейт", "вечер", "катание"],
+    "text": "Вечером я вышел на улицу, чтобы покататься на скейте. Прохладный ветер и спокойная обстановка сделали это время особенным.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post14.jpeg",
+    "likes": 13,
+    "viewsCount": 19,
+    "user": "669cdd89efb8bd6ac468aac5",
+    "createdAt": "2024-07-16T20:45:30.710+00:00",
+    "updatedAt": "2024-07-16T20:45:30.710+00:00"
+  },
+  {
+    "title": "Экстремальные спуски на самокате",
+    "tags": ["самокат", "экстрим", "спуск"],
+    "text": "Экстремальные спуски на самокате по горным тропам - это мой новый вызов. Адреналин зашкаливает, но я справляюсь и чувствую себя живым как никогда.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post15.jpeg",
+    "likes": 16,
+    "viewsCount": 21,
+    "user": "669cdd89efb8bd6ac468aac6",
+    "createdAt": "2024-07-17T11:30:50.710+00:00",
+    "updatedAt": "2024-07-17T11:30:50.710+00:00"
+  },
+  {
+    "title": "Первый день на роликах",
+    "tags": ["ролики", "первый день", "учеба"],
+    "text": "Сегодня был мой первый день на роликах. Я упал несколько раз, но это не остановило меня. Впереди много тренировок и веселых моментов.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post16.jpeg",
+    "likes": 12,
+    "viewsCount": 15,
+    "user": "669cdd89efb8bd6ac468aac7",
+    "createdAt": "2024-07-18T10:05:40.710+00:00",
+    "updatedAt": "2024-07-18T10:05:40.710+00:00"
+  },
+  {
+    "title": "Соревнования на BMX",
+    "tags": ["BMX", "соревнования", "спортивное событие"],
+    "text": "Принял участие в соревнованиях на BMX. Конкуренция была жесткой, но я показал хороший результат. Отличный опыт и много новых друзей.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post2.jpeg",
+    "likes": 19,
+    "viewsCount": 27,
+    "user": "669cdd89efb8bd6ac468aac9",
+    "createdAt": "2024-07-19T09:50:20.710+00:00",
+    "updatedAt": "2024-07-19T09:50:20.710+00:00"
+  },
+  {
+    "title": "Трюки на скейте для начинающих",
+    "tags": ["скейт", "трюки", "начинающие"],
+    "text": "Сегодня я учил своего друга базовым трюкам на скейте. Это было интересно и полезно для нас обоих. Делюсь советами для начинающих скейтеров.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post3.jpeg",
+    "likes": 11,
+    "viewsCount": 14,
+    "user": "669cdd89efb8bd6ac468aac8",
+    "createdAt": "2024-07-20T13:15:30.710+00:00",
+    "updatedAt": "2024-07-20T13:15:30.710+00:00"
+  },
+  {
+    "title": "Ремонт самоката своими руками",
+    "tags": ["самокат", "ремонт", "своими руками"],
+    "text": "Сегодня я решил починить свой самокат. Это было не так сложно, как я думал. Теперь он как новый и готов к новым приключениям.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post4.jpeg",
+    "likes": 14,
+    "viewsCount": 20,
+    "user": "669cdd89efb8bd6ac468aac6",
+    "createdAt": "2024-07-21T11:10:25.710+00:00",
+    "updatedAt": "2024-07-21T11:10:25.710+00:00"
+  },
+  {
+    "title": "Роликовая дискотека",
+    "tags": ["ролики", "дискотека", "ночь"],
+    "text": "Посетил роликовую дискотеку. Музыка, свет и движение - всё это создало незабываемую атмосферу. Это был лучший вечер в этом месяце.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post5.jpeg",
+    "likes": 17,
+    "viewsCount": 26,
+    "user": "669cdd89efb8bd6ac468aac7",
+    "createdAt": "2024-07-22T22:20:50.710+00:00",
+    "updatedAt": "2024-07-22T22:20:50.710+00:00"
+  },
+  {
+    "title": "Преодоление страха на BMX",
+    "tags": ["BMX", "страх", "преодоление"],
+    "text": "Сегодня я преодолел свой страх перед выполнением сложного трюка на BMX. Это было нелегко, но я сделал это и теперь чувствую себя увереннее.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post6.jpeg",
+    "likes": 13,
+    "viewsCount": 17,
+    "user": "669cdd89efb8bd6ac468aac9",
+    "createdAt": "2024-07-23T15:30:40.710+00:00",
+    "updatedAt": "2024-07-23T15:30:40.710+00:00"
+  },
+  {
+    "title": "Скейтбординг на пляже",
+    "tags": ["скейт", "пляж", "лето"],
+    "text": "Провел день на пляже, катаясь на скейте. Отличное сочетание солнца, моря и любимого занятия. Это был незабываемый день.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post7.jpeg",
+    "likes": 12,
+    "viewsCount": 16,
+    "user": "669cdd89efb8bd6ac468aac8",
+    "createdAt": "2024-07-24T14:10:20.710+00:00",
+    "updatedAt": "2024-07-24T14:10:20.710+00:00"
+  },
+  {
+    "title": "Обзор нового самоката",
+    "tags": ["самокат", "обзор", "новинка"],
+    "text": "Сегодня я протестировал новый самокат. Он оказался отличным! Делюсь своими впечатлениями и подробным обзором.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post8.jpeg",
+    "likes": 15,
+    "viewsCount": 22,
+    "user": "669cdd89efb8bd6ac468aac6",
+    "createdAt": "2024-07-25T16:40:30.710+00:00",
+    "updatedAt": "2024-07-25T16:40:30.710+00:00"
+  },
+  {
+    "title": "Учимся кататься на роликах вместе",
+    "tags": ["ролики", "учеба", "вместе"],
+    "text": "Сегодня я и мой друг решили научиться кататься на роликах. Это был веселый и продуктивный день, полный смеха и новых умений.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/post9.jpeg",
+    "likes": 14,
+    "viewsCount": 19,
+    "user": "669a4be74331062baf9ebe36",
+    "createdAt": "2024-07-26T11:20:25.710+00:00",
+    "updatedAt": "2024-07-26T11:20:25.710+00:00"
+  },
+  {
+    "title": "Уличные гонки на BMX",
+    "tags": ["BMX", "уличные гонки", "скорость"],
+    "text": "Принял участие в уличных гонках на BMX. Скорость, адреналин и азарт - всё это делает эти гонки незабываемыми.",
+    "imageUrl": "https://raw.githubusercontent.com/umkament/roller_app_front/main/src/assets/usersInfo/user3.jpeg",
+    "likes": 20,
+    "viewsCount": 28,
+    "user": "669cdd89efb8bd6ac468aac5",
+    "createdAt": "2024-07-27T18:15:30.710+00:00",
+    "updatedAt": "2024-07-27T18:15:30.710+00:00"
+  }
+]

@@ -3,14 +3,14 @@ import mongoose from 'mongoose';
 import multer from 'multer';
 import cors from 'cors';
 
-import {registerValidation, loginValidation, petCreateValidation} from "./validations/validations.js";
+import {registerValidation, loginValidation, postCreateValidation} from "./validations/validations.js";
 import {checkAuth, handleValidationErrors} from "./utils/index.js";
-import {UserController, PetController} from "./controllers/index.js";
+import {UserController, PostController} from "./controllers/index.js";
 
 import * as path from "path";
 import dotenv from 'dotenv';
 
-const PORT = process.env.PORT || 4440
+const PORT = process.env.PORT || 4411
 
 dotenv.config()
 
@@ -51,11 +51,11 @@ app.post('/auth/register', registerValidation, handleValidationErrors, UserContr
 app.post('/auth/login', loginValidation, handleValidationErrors, UserController.login)
 app.get('/auth/me', checkAuth, UserController.getMe)
 
- app.get('/pets', PetController.getAll)
- app.get('/pets/:id', PetController.getOne)
- app.post('/pets',checkAuth, petCreateValidation, handleValidationErrors, PetController.createPet)
- app.delete('/pets/:id', checkAuth, PetController.removePet)
- app.patch('/pets/:id', checkAuth, petCreateValidation, handleValidationErrors, PetController.updatePet)
+ app.get('/posts', PostController.getAll)
+ app.get('/post/:id', PostController.getOne)
+ app.post('/post',checkAuth, postCreateValidation, handleValidationErrors, PostController.create)
+ app.delete('/post/:id', checkAuth, PostController.remove)
+ app.patch('/post/:id', checkAuth, postCreateValidation, handleValidationErrors, PostController.update)
 
 app.post('/upload', checkAuth, upload.single('image'), (req, res) =>{
   res.json({
