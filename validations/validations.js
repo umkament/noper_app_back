@@ -1,12 +1,12 @@
 import {body} from 'express-validator'
 
 export const registerValidation = [
-  body('name', 'enter name').isLength({min: 1}),
-  body('surname', 'enter surname').isLength({min: 1}),
+  body('name', 'enter name').isLength({min: 2}),
+  body('surname', 'enter surname').isLength({min: 2}),
   body('username', 'enter username').isLength({min: 2}),
   body('email', 'invalid email format').isEmail(),
   body('password', 'password must contain at least 5 characters').isLength({min: 5}),
-  body('avatarUrl', 'wrong avatar link').optional().isURL(),
+  //body('avatarUrl', 'wrong avatar link').optional().isURL(),
   //body('dateOfBirth', 'wrong date of birth').optional().isDate()
 ]
 export const loginValidation = [

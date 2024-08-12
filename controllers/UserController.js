@@ -56,6 +56,8 @@ export const register = async (req, res) => {
       return res.status(400).json(errors.array())
     }*/
 
+
+
     //..2..
     const password = req.body.password
     //генерируем алгоритм шифрования пароля
@@ -103,6 +105,14 @@ export const register = async (req, res) => {
   } catch (err) {
     console.log(err) //конкретную ошибку выводим для себя в консоль
 // возвращаем пользователю ответ, с указанием статуса ошибки
+if (err.code === 11000) {
+  // Ошибка уникальности
+  const errorField = Object.keys(err.keyPattern)[0];
+  return res.status(400).send({ 
+    errorField, 
+    message: `${errorField === 'username' ? 'подобный Ник' : 'подобный e-mail'} уже существует` 
+  });
+}
     res.status(500).json({
       message: "failed to register"
     })
@@ -165,3 +175,13 @@ export const getMe = async (req, res) => {
     })
   }
 }
+
+
+
+
+
+
+
+
+
+
