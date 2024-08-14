@@ -77,8 +77,9 @@ if (!userId || !mongoose.Types.ObjectId.isValid(userId)) {
 const objectId = new mongoose.Types.ObjectId(userId)
 const posts = await PostModel.find({user: objectId}).exec()
 if (!posts.length) {
-  return res.status(404).json({
-    message: 'Посты пользователя не найдены',
+  return res.status(200).json({
+    posts: [], 
+    message: 'у пользователя пока нет постов',
   });
 }
 res.json(posts)

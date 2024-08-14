@@ -34,13 +34,17 @@ cb(null, path.resolve('./uploads'))
   }
 })
 
-
 const upload = multer({storage})
+
+const corsOptions = {
+  origin: 'http://localhost:5173', // Замените на ваш фронтенд-URL
+  credentials: true, // Разрешить отправку куков и токенов
+}
 
 //указываем, что в приложении нужно использовать json из самого express
 //благодаря этому наше приложение может читать json формат
 app.use(express.json())
-app.use(cors())
+app.use(cors(corsOptions))
 app.use('/uploads', express.static('uploads'))
 
 
