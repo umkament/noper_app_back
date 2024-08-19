@@ -141,14 +141,25 @@ export const login = async (req, res) => {
          expiresIn: '30d'
        }
     )
+
+    // Установка cookies с токеном
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // Использовать только HTTPS в продакшене
+      sameSite: 'strict', // Защита от CSRF
+      maxAge: 3600000, // Время жизни cookies (1 час)
+    });
+
     const {passwordHash, ...userData} = user._doc
 
     res.json({
       ...userData,
       token
     })
-  } catch (e) {
-    console.log(e)
+  } catch (err) {
+    console.log(err)
+
+
     res.status(500).json({
       message: "failed to login"
     })
@@ -158,7 +169,7 @@ export const getMe = async (req, res) => {
   try {
     // производим расшифровку токена в checkAuth
 //ищем пользователя по id
-    const user = await UserModel.findById(req.userId) //не понимаю, откуда берется userId?????
+    const user = await UserModel.findById(req.userId) 
 
     if (!user) {
       return res.status(404).json({
@@ -175,8 +186,14 @@ export const getMe = async (req, res) => {
     })
   }
 }
-
-
+export const logout = async (req, res)=>{
+  res.clearCookie('token', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+  });
+  return res.status(200).json({ message: 'Successfully logged out' });
+}
 
 
 

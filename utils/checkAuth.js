@@ -6,13 +6,14 @@ import jwt from 'jsonwebtoken';
 
 export const checkAuth = (req, res, next) => {
   //парсим токен, исключаем слово Bearer, которое приходит в Insomnia
-  const token = (req.headers.authorization || '').replace(/Bearer\s?/, '')
+  //const token = (req.headers.authorization || '').replace(/Bearer\s?/, '')
+  const token = req.cookies.token
   if (token) {
     try {
       //расшифровываем токен
       const decoded = jwt.verify(token, 'secret123');
       req.userId = decoded._id;
-      next();
+      next(); //передаем управление следующему middleware или маршруту
     } catch (e) {
       return res.status(403).json({
         message: "no access"

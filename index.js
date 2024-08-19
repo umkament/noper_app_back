@@ -2,6 +2,7 @@ import express, {json} from 'express';
 import mongoose from 'mongoose';
 import multer from 'multer';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 import {registerValidation, loginValidation, postCreateValidation} from "./validations/validations.js";
 import {checkAuth, handleValidationErrors} from "./utils/index.js";
@@ -46,6 +47,7 @@ const corsOptions = {
 app.use(express.json())
 app.use(cors(corsOptions))
 app.use('/uploads', express.static('uploads'))
+app.use(cookieParser());
 
 
 // если придет запрос на '/auth/register', тогда мы проверим этот запрос на валидацию, прописанную в registerValidation
@@ -53,6 +55,7 @@ app.use('/uploads', express.static('uploads'))
 
 app.post('/auth/register', registerValidation, handleValidationErrors, UserController.register )
 app.post('/auth/login', loginValidation, handleValidationErrors, UserController.login)
+app.post('/auth/logout', UserController.logout)
 app.get('/auth/me', checkAuth, UserController.getMe)
 app.get('/users', UserController.getAllUsers)
 app.get('/user/:userId', UserController.getOneUser)
