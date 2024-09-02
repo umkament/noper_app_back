@@ -19,7 +19,6 @@ export const getAllUsers = async (req, res) => {
     });
   }
 };
-
 export const getOneUser = async (req, res) =>{
   try{
   const {userId} = req.params
@@ -44,6 +43,7 @@ const objectId = new ObjectId(userId)
 }
 }
  
+
 export const register = async (req, res) => {
   try {
     //вынесли указанный код в утилитную функцию handleValidstionErrors
@@ -194,6 +194,68 @@ export const logout = async (req, res)=>{
   });
   return res.status(200).json({ message: 'Successfully logged out' });
 }
+
+export const updateUserProfile = async (req, res)=>{
+  const userId = req.userId
+  const {name, surname, username, email, avatarUrl, description, sportType, link} = req.body
+try{
+  console.log('Получение пользователя по id', userId)
+const user = await UserModel.findById(userId)
+
+  if (!user){
+    console.log('пользователь не найден')
+    return res.status(404).json({message: 'User not found'})
+  }
+
+  // res.cookie('token', token, {
+  //   httpOnly: true,
+  //   secure: process.env.NODE_ENV === 'production', // Используйте secure только в production с https
+  //   sameSite: 'Lax', // Или 'None' если хотите отправлять куки через кросс-домены
+  // });
+
+  console.log('данные для обновления', {name, surname, username, email, avatarUrl, description, sportType, link})
+  user.name = name || user.name
+  user.surname = surname || user.surname
+  user.username = username || user.username
+  user.email = email || user.email
+  user.avatarUrl = avatarUrl || user.avatarUrl
+  user.description = description || user.description
+  user.sportType = sportType || user.sportType
+  user.link = link || user.link
+
+  console.log('сохранение данных...')
+  await user.save();
+  console.log('профиль обновлен успешно')
+
+    res.json({ message: 'Profile updated successfully', user });
+} catch(err){
+  console.log('ошибка при обновлении профиля', err)
+res.status(500).json({message: 'Error updating profile', err: err.message, stack: err.stack})
+}
+}
+
+export const deleteAvatar = async (req, res) => {
+  const userId = req.userId;
+
+  try {
+    const user = await UserModel.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Удаляем аватар
+    user.avatarUrl = '';
+
+    await user.save();
+
+    res.json({ message: 'Avatar deleted successfully', user });
+  } catch (err) {
+    console.error('Ошибка при удалении аватара', err);
+    res.status(500).json({ message: 'Error deleting avatar', err: err.message, stack: err.stack });
+  }
+};
+
 
 
 

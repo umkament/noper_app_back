@@ -37,6 +37,7 @@ const UserSchema = new mongoose.Schema({
      phoneNumber: String,
      description: String,
      sportType: String,
+     link: String
    },
    {
      timestamps: true

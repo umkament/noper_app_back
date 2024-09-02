@@ -27,3 +27,21 @@ export const checkAuth = (req, res, next) => {
   }
 }
 
+
+//функция возвращает статус аутентификации, для отрисовки приватных страниц
+export const checkAuthStatus = (req, res)=>{
+  const token = req.cookies?.token
+
+  if (!token){
+    return res.status(401).json({message: "пользователь не авторизован", authenticated: false})
+  }
+
+  try{
+    const decoded = jwt.verify(token, 'secret123');
+    req.userId = decoded._id;
+    return res.json({authenticated: true})
+  }catch(e){
+    return res.status(401).json({message: e, authenticated: false})
+  }
+}
+
