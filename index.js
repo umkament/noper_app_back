@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser';
 
 import {registerValidation, loginValidation, postCreateValidation} from "./validations/validations.js";
 import {checkAuth, handleValidationErrors} from "./utils/index.js";
-import {UserController, PostController} from "./controllers/index.js";
+import {UserController, PostController, CommentController, LikeController} from "./controllers/index.js";
 
 import * as path from "path";
 import dotenv from 'dotenv';
@@ -62,25 +62,17 @@ app.use(cookieParser());
 
 // если придет запрос на '/auth/register', тогда мы проверим этот запрос на валидацию, прописанную в registerValidation
 // и если валидация проходит, то только после этого начнет выполняться колбэк функция
-
+//регистрация, авторизация
 app.post('/auth/register', registerValidation, handleValidationErrors, UserController.register )
 app.post('/auth/login', loginValidation, handleValidationErrors, UserController.login)
 app.post('/auth/logout', UserController.logout)
 app.get('/auth/me', checkAuth, UserController.getMe)
+
+
+//редактирование профиля
 app.put('/edit/profile', checkAuth, UserController.updateUserProfile)
 app.delete('/auth/avatar', checkAuth, UserController.deleteAvatar)
 app.get('/auth/status', checkAuthStatus)
-
-app.get('/users', UserController.getAllUsers)
-app.get('/user/:userId', UserController.getOneUser)
-app.get('/user/:userId/posts', PostController.getUserPosts)
-
- app.get('/posts', PostController.getAll)
- app.get('/post/:id', PostController.getOne)
- app.post('/post',checkAuth, postCreateValidation, handleValidationErrors, PostController.create)
- app.delete('/post/:id', checkAuth, PostController.remove)
- app.patch('/post/:id', checkAuth, postCreateValidation, handleValidationErrors, PostController.update)
-
 app.post('/upload', checkAuth, upload.single('image'), (req, res) =>{
   if (!req.file) {
     return res.status(400).json({ message: 'File upload failed.' });
@@ -89,6 +81,38 @@ app.post('/upload', checkAuth, upload.single('image'), (req, res) =>{
     url: `/uploads/${req.file.originalname}`
   })
 })
+
+//получение юзеров и их постов
+app.get('/users', UserController.getAllUsers)
+app.get('/user/:userId', UserController.getOneUser)
+app.get('/user/:userId/posts', PostController.getUserPosts)
+
+//посты: получение, создание, редактирование, удаление
+ app.get('/posts', PostController.getAll)
+ app.get('/post/:id', PostController.getOne)
+ app.delete('/post/:id', checkAuth, PostController.remove)
+ app.patch('/post/:id', checkAuth, postCreateValidation,handleValidationErrors, PostController.update)
+ app.post('/post', checkAuth, postCreateValidation, (req, res, next) => {
+  console.log('Запрос прошел аутентификацию и валидацию:', req.body);
+  next();
+}, PostController.create);
+ app.post('/upload/image', upload.single('image'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ message: 'Файл не загружен' });
+  }
+  const imageUrl = `/uploads/${req.file.originalname}`;
+  res.json({ url: imageUrl });
+});
+
+//комментарии: создание, получение, удаление
+app.get('/comments/:postId', CommentController.getCommentsByPost)
+app.post('/comment', checkAuth, CommentController.createComment)
+app.delete('/comment/:commentId', checkAuth, CommentController.deleteComment)
+
+//лайки: добавление и удаление, получение
+app.post('/like/:targetId', LikeController.addDeleteLike)
+app.get('/likes/:targetId', LikeController.getLikes)
+
 
 //следующий код запускает непосредственно веб-сервер
 // функция listen первым параметром принимает порт, а вторым (необязательным) функцию, в которой

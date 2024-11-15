@@ -127,30 +127,79 @@ export const remove = async (req, res) => {
 };
 
 export const create = async (req, res) => {
-  try {
-    const {title, text, imageUrl, tags} = req.body
-    console.log('Received imageUrl:', imageUrl);
+  // try {
+  //   console.log('body', req.body)
+  //   console.log('file', req.file)
 
-    const doc = new PostModel({
-      title,
-      text,
-      imageUrl,
-      tags,  /*.split(','),*/
-      user: req.userId
-    });
+  //   const {title, text, tags} = req.body
+  //   const tagsArray = tags ? tags.split(',').map(tag => tag.trim()) : []; 
+  //   const imageUrl = req.file ? `/upload/${req.file.filename}` : '' // если файл существует(загружен), то сохраняем его в переменную как URL изображения (для БД)
+    
+  //   console.log('Обработанный imageUrl:', imageUrl);
+  //   console.log('Обработанные tags:', tags ? tags.split(',') : []);
+  //   console.log('Полученные данные:', { title, text, tags, imageUrl });
 
-    console.log('Received imageUrl:', );
+  //   const doc = new PostModel({
+  //     title,
+  //     text,
+  //     imageUrl, //URL загруженного изображения
+  //     tags: tagsArray,  /*.split(','),*/
+  //     user: req.userId
+  //   });
 
-    const post = await doc.save();
+  //   console.log('Received imageUrl:', );
 
-    res.json(post);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      message: 'Не удалось создать статью',
-    });
-  }
-};
+  //   const post = await doc.save();
+
+  //   res.json(post);
+  // } catch (err) {
+  //   console.log(err);
+  //   res.status(500).json({
+  //     message: 'Не удалось создать статью',
+  //   });
+  // }
+
+    try {
+      console.log('body', req.body)
+      console.log('file', req.file)
+  
+      const {title, text, tags} = req.body
+      if (!title || !text) {
+        return res.status(400).json({
+          message: 'Необходимо указать заголовок и текст статьи',
+        });
+      }
+
+      const imageUrl = req.file ? `/uploads/${req.file.filename}` : '' // если файл существует(загружен), то сохраняем его в переменную как URL изображения (для БД)
+      
+      console.log('Обработанный imageUrl:', imageUrl);
+      console.log('Обработанные tags:', tags );
+      console.log('Полученные данные:', { title, text, tags, imageUrl });
+  
+      const doc = new PostModel({
+        title: req.body.title,
+        text: req.body.text,
+        imageUrl: req.body.imageUrl, //URL загруженного изображения
+        tags: Array.isArray(tags) ? req.body.tags : [],  
+        user: req.userId
+      });
+      console.log('Создание поста в MongoDB:', doc);
+  
+      const post = await doc.save();
+
+      console.log('Успешное создание поста:', post);
+  
+      res.json(post);
+    } catch (err) {
+      console.log(err);
+      console.error('Ошибка создания поста:', err);
+
+      res.status(500).json({
+        message: 'Не удалось создать статью',
+      });
+    }
+  };
+
 export const update = async (req, res) => {
   try {
     const postId = req.params.id;

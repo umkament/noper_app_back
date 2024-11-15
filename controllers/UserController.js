@@ -43,7 +43,6 @@ const objectId = new ObjectId(userId)
 }
 }
  
-
 export const register = async (req, res) => {
   try {
     //вынесли указанный код в утилитную функцию handleValidstionErrors
@@ -152,7 +151,7 @@ export const login = async (req, res) => {
 
     const {passwordHash, ...userData} = user._doc
 
-    res.json({
+   return res.json({
       ...userData,
       token
     })
@@ -160,7 +159,7 @@ export const login = async (req, res) => {
     console.log(err)
 
 
-    res.status(500).json({
+    return res.status(500).json({
       message: "failed to login"
     })
   }
