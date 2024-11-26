@@ -49,7 +49,7 @@ const upload = multer({storage,
 const corsOptions = {
   origin: 'http://localhost:5173', // Замените на ваш фронтенд-URL
   credentials: true, // Разрешить отправку куков и токенов
-  methods: 'GET,POST,PUT,DELETE',
+  methods: 'GET,POST,PUT,DELETE,PATCH',
 }
 
 //указываем, что в приложении нужно использовать json из самого express
@@ -110,8 +110,8 @@ app.post('/comment', checkAuth, CommentController.createComment)
 app.delete('/comment/:commentId', checkAuth, CommentController.deleteComment)
 
 //лайки: добавление и удаление, получение
-app.post('/like/:targetId', LikeController.addDeleteLike)
-app.get('/likes/:targetId', LikeController.getLikes)
+app.post('/like/:targetId', checkAuth, LikeController.addDeleteLike)
+app.get('/likes/:targetId', checkAuth, LikeController.getLikes)
 
 
 //следующий код запускает непосредственно веб-сервер

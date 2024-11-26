@@ -3,7 +3,7 @@ import LikeModel from '../models/likes.js';
 
 export const addDeleteLike = async (req, res) =>{
     const targetId = req.params.targetId;
-    const userId = req.user._id;
+    const userId = req.userId; 
     const targetType = req.body.targetType; // Тип сущности (например, 'Post', 'Comment', 'User')
   
     try {
@@ -28,7 +28,7 @@ export const addDeleteLike = async (req, res) =>{
 export const getLikes = async (req, res) => {
     const targetId = req.params.targetId;
     const targetType = req.query.targetType;
-    const userId = req.user._id;
+    const userId = req.userId; 
   
     try {
       // Получаем количество лайков для сущности
