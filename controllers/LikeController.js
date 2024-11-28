@@ -43,6 +43,32 @@ export const getLikes = async (req, res) => {
     }
   }
 
+  export const getLikesBulk = async (req, res) => {
+    const { targetIds } = req.body; // Массив ID комментариев
+    const targetType = req.query.targetType; // Тип сущности
+    const userId = req.userId; // ID текущего пользователя
+  
+    try {
+      // Получаем все лайки для заданных targetIds и targetType
+      const likes = await LikeModel.find({ targetId: { $in: targetIds }, targetType });
+  
+      // Формируем структуру данных: { [targetId]: { likedByUser, likesCount } }
+      const result = targetIds.reduce((acc, id) => {
+        const filteredLikes = likes.filter(like => like.targetId.toString() === id);
+        acc[id] = {
+          likesCount: filteredLikes.length,
+          likedByUser: filteredLikes.some(like => like.user.toString() === userId),
+        };
+        return acc;
+      }, {});
+  
+      res.status(200).json(result);
+    } catch (error) {
+      res.status(500).json({ message: 'Server Error' });
+    }
+  };
+  
+
     
   
 

@@ -112,6 +112,7 @@ app.delete('/comment/:commentId', checkAuth, CommentController.deleteComment)
 //лайки: добавление и удаление, получение
 app.post('/like/:targetId', checkAuth, LikeController.addDeleteLike)
 app.get('/likes/:targetId', checkAuth, LikeController.getLikes)
+app.post('/likes/bulk', checkAuth, LikeController.getLikesBulk)
 
 
 //следующий код запускает непосредственно веб-сервер
