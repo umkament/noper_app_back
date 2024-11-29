@@ -11,6 +11,7 @@ import {UserController, PostController, CommentController, LikeController} from 
 import * as path from "path";
 import dotenv from 'dotenv';
 import { checkAuthStatus } from './utils/checkAuth.js';
+import { getPostByTags } from './controllers/PostController.js';
 
 const PORT = process.env.PORT || 4411
 
@@ -103,6 +104,9 @@ app.get('/user/:userId/posts', PostController.getUserPosts)
   const imageUrl = `/uploads/${req.file.originalname}`;
   res.json({ url: imageUrl });
 });
+
+//поиск постов по тегам
+app.get('/posts/search', getPostByTags)
 
 //комментарии: создание, получение, удаление
 app.get('/comments/:postId', CommentController.getCommentsByPost)

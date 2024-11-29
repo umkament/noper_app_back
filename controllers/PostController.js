@@ -218,3 +218,20 @@ export const update = async (req, res) => {
     });
   }
 };
+
+export const getPostByTags = async (req, res)=>{
+  try {
+    const { tags } = req.query; // Получаем массив тегов из query параметров
+    const searchTags = tags ? tags.split(',') : []; // Преобразуем строку в массив
+
+    const regexTags = searchTags.map(tag => new RegExp(tag, 'i')); // Создаем регулярные выражения для частичного совпадения
+    const posts = await PostModel.find({
+      tags: { $in: regexTags }, // Ищем, где хотя бы один тег совпадает
+    });
+
+    res.json(posts)
+  } catch(error){
+    console.error(error);
+    res.status(500).json({ message: 'Не удалось выполнить поиск' });
+  }
+}
