@@ -12,6 +12,7 @@ import * as path from "path";
 import dotenv from 'dotenv';
 import { checkAuthStatus } from './utils/checkAuth.js';
 import { getPostByTags } from './controllers/PostController.js';
+import { getSavedToUser, toggleSavedItem } from './controllers/SavedController.js';
 
 const PORT = process.env.PORT || 4411
 
@@ -63,6 +64,7 @@ app.use(cookieParser());
 
 // если придет запрос на '/auth/register', тогда мы проверим этот запрос на валидацию, прописанную в registerValidation
 // и если валидация проходит, то только после этого начнет выполняться колбэк функция
+
 //регистрация, авторизация
 app.post('/auth/register', registerValidation, handleValidationErrors, UserController.register )
 app.post('/auth/login', loginValidation, handleValidationErrors, UserController.login)
@@ -117,6 +119,11 @@ app.delete('/comment/:commentId', checkAuth, CommentController.deleteComment)
 app.post('/like/:targetId', checkAuth, LikeController.addDeleteLike)
 app.get('/likes/:targetId', checkAuth, LikeController.getLikes)
 app.post('/likes/bulk', checkAuth, LikeController.getLikesBulk)
+
+//сохраненное: получение, добавление и удаление юзеров и статей
+app.get('/saved', checkAuth, getSavedToUser);
+app.post('/saved/toggle', checkAuth, toggleSavedItem);
+
 
 
 //следующий код запускает непосредственно веб-сервер
