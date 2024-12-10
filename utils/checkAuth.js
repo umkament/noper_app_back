@@ -11,7 +11,7 @@ export const checkAuth = (req, res, next) => {
   if (token) {
     try {
       //расшифровываем токен
-      const decoded = jwt.verify(token, 'secret123');
+      const decoded = jwt.verify(token, process.env.SECRET_KEY);
       req.userId = decoded._id;
       next(); //передаем управление следующему middleware или маршруту
     } catch (e) {
@@ -39,7 +39,7 @@ export const checkAuthStatus = (req, res)=>{
   }
 
   try{
-    const decoded = jwt.verify(token, 'secret123');
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
     req.userId = decoded._id;
     return res.json({authenticated: true})
   }catch(e){
