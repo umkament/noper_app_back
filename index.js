@@ -131,7 +131,7 @@ app.post('/saved/toggle', checkAuth, toggleSavedItem);
 // мы говорим: если наш сервер не смог запуститься, то мы вернем об этом сообщение
 // если ошибки нет, то функция вернет сообщение 'server ok'
 
-app.listen(PORT, (err) => {
+app.listen(PORT, '0.0.0.0', (err) => {
   if (err) {
     return console.log(err)
   }
