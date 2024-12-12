@@ -31,7 +31,8 @@ const app = express();
 
 const storage = multer.diskStorage({
   destination: (_, __, cb)=>{
-cb(null, path.resolve('./uploads'))
+//cb(null, path.resolve('./uploads'))
+cb(null, path.join(__dirname, 'uploads'))
   },
   filename: (_, file, cb)=>{
     cb(null, file.originalname)
@@ -58,7 +59,8 @@ const corsOptions = {
 //благодаря этому наше приложение может читать json формат
 app.use(express.json())
 app.use(cors(corsOptions))
-app.use('/uploads', express.static('uploads'))
+//app.use('/uploads', express.static('uploads'))
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cookieParser());
 
 

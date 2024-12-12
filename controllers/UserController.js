@@ -210,11 +210,6 @@ const user = await UserModel.findById(userId)
     return res.status(404).json({message: 'User not found'})
   }
 
-  // res.cookie('token', token, {
-  //   httpOnly: true,
-  //   secure: process.env.NODE_ENV === 'production', // Используйте secure только в production с https
-  //   sameSite: 'Lax', // Или 'None' если хотите отправлять куки через кросс-домены
-  // });
 
   console.log('данные для обновления', {name, surname, username, email, avatarUrl, description, sportType, link})
   user.name = name || user.name
