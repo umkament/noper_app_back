@@ -13,6 +13,12 @@ import dotenv from 'dotenv';
 import { checkAuthStatus } from './utils/checkAuth.js';
 import { getPostByTags } from './controllers/PostController.js';
 import { getSavedToUser, toggleSavedItem } from './controllers/SavedController.js';
+//import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Имитация __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 4411
 
