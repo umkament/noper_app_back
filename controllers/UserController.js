@@ -141,13 +141,15 @@ export const login = async (req, res) => {
        }
     )
 
+    console.log('Generated token:', token); 
+
     // Установка cookies с токеном
     res.cookie('token', token, {
       httpOnly: true,
       secure: false,
       //secure: process.env.NODE_ENV === 'production', // Использовать только HTTPS в продакшене
       sameSite: 'Lax', // для кросс-доменных запросов (если https то "None")
-      maxAge: 3600000, // Время жизни cookies (1 час)
+      //maxAge: 3600000, // Время жизни cookies (1 час)
     });
 
     const {passwordHash, ...userData} = user._doc

@@ -8,6 +8,7 @@ export const checkAuth = (req, res, next) => {
   //парсим токен, исключаем слово Bearer, которое приходит в Insomnia
   //const token = (req.headers.authorization || '').replace(/Bearer\s?/, '')
   const token = req.cookies.token || (req.headers.authorization || '').replace(/Bearer\s?/, '');
+  console.log('Token:', token); 
   if (token) {
     try {
       //расшифровываем токен
