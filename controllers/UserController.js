@@ -146,7 +146,7 @@ export const login = async (req, res) => {
       httpOnly: true,
       secure: false,
       //secure: process.env.NODE_ENV === 'production', // Использовать только HTTPS в продакшене
-      sameSite: 'strict', // Защита от CSRF
+      sameSite: 'None', // для кросс-доменных запросов
       maxAge: 3600000, // Время жизни cookies (1 час)
     });
 
@@ -191,7 +191,7 @@ export const logout = async (req, res)=>{
     httpOnly: true,
     secure: false,
     //secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
+    sameSite: 'None',
   });
   return res.status(200).json({ message: 'Successfully logged out' });
 }
