@@ -146,11 +146,11 @@ export const login = async (req, res) => {
     // Установка cookies с токеном
     res.cookie('token', token, {
       httpOnly: true,
-      //secure: false,
-      secure: true,
+      secure: false,
+      //secure: true,
       //secure: process.env.NODE_ENV === 'production', // Использовать только HTTPS в продакшене
-     // sameSite: 'Lax', // для кросс-доменных запросов (если https то "None")
-     sameSite: 'None',
+     sameSite: 'Lax', // для кросс-доменных запросов (если https то "None")
+     //sameSite: 'None',
       //maxAge: 3600000, // Время жизни cookies (1 час)
     });
 
@@ -193,11 +193,11 @@ export const getMe = async (req, res) => {
 export const logout = async (req, res)=>{
   res.clearCookie('token', {
     httpOnly: true,
-    //secure: false,
+    secure: false,
     //secure: process.env.NODE_ENV === 'production',
-    //sameSite: 'Lax',
-    secure: true,
-    sameSite: 'None'
+    sameSite: 'Lax',
+    //secure: true,
+    //sameSite: 'None'
   });
   return res.status(200).json({ message: 'Successfully logged out' });
 }

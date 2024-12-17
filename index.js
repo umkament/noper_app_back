@@ -56,8 +56,8 @@ const upload = multer({storage,
 },})
 
 const corsOptions = {
-  //origin: 'http://localhost:5173', // Замените на ваш фронтенд-URL
-  origin: 'https://umkament.github.io/noper_app_front/',
+  origin: 'http://localhost:5173', // Замените на ваш фронтенд-URL
+  //origin: 'https://umkament.github.io/noper_app_front/',
   credentials: true, // Разрешить отправку куков и токенов
   methods: 'GET,POST,PUT,DELETE,PATCH',
 }
